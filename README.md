@@ -1,1 +1,3 @@
-# sonic2dn
+# Sonic CDN based on Cloudflare workers
+## Cloudflare
+## NextJs
