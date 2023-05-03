@@ -8,7 +8,7 @@ export const config = {
 export default async function handler(req: NextRequest) {
 	return new Response(
 		JSON.stringify({
-			name: 'Test name',
+			name: process.env.SOME_KEY,
 		}),
 		{
 			status: 200,
