@@ -14,6 +14,10 @@
   },
   "homepage": "https://github.com/morfey897/sonic2dn#readme",
   "scripts": {
+    "deploy": "npx @cloudflare/next-on-pages",
+    "kill": "kill-port 8788",
+    "cf": "npx @cloudflare/next-on-pages --watch",
+    "wr": "echo 'npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --port 8788 --live-reload --local --persist --d1 D1_TEST_DB --binding' $(grep -o '^[^#]*' .env) | $0",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -32,5 +36,12 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^0.10.1",
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "better-sqlite3": "^8.0.1",
+    "kill-port": "^2.0.1",
+    "wrangler": "^2.19.0"
   }
 }
