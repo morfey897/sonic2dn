@@ -5,9 +5,6 @@ export const config = {
   runtime: 'edge',
 };
 
-//@ts-ignore
-const bufferToHex = (buffer: ArrayBufferLike) => [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
-
 async function generateSignedUrl(link: string) {
   const url = new URL(link);
   // `url` is a full imagedelivery.net URL
@@ -34,7 +31,8 @@ async function generateSignedUrl(link: string) {
 
   // Generate the signature
   const mac = await crypto.subtle.sign('HMAC', key, encoder.encode(stringToSign));
-  const sig = bufferToHex(new Uint8Array(mac).buffer);
+  //@ts-ignore
+  const sig = [...new Uint8Array(new Uint8Array(mac).buffer)].map(x => x.toString(16).padStart(2, '0')).join('');
 
   // And attach it to the `url`
   url.searchParams.set('sig', sig);

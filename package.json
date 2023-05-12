@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/morfey897/sonic2dn#readme",
   "scripts": {
-    "deploy": "npx @cloudflare/next-on-pages",
+    "deploy": "npx @cloudflare/next-on-pages && node scripts/deploy/cp.js",
     "kill": "kill-port 8788",
     "cf": "npx @cloudflare/next-on-pages --watch",
     "wr": "echo 'npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --port 8788 --live-reload --local --persist --binding' $(grep -o '^[^#]*' .env) | $0",
