@@ -17,11 +17,12 @@
     "deploy": "npx @cloudflare/next-on-pages",
     "kill": "kill-port 8788",
     "cf": "npx @cloudflare/next-on-pages --watch",
-    "wr": "echo 'npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --port 8788 --live-reload --local --persist --d1 D1_TEST_DB --binding' $(grep -o '^[^#]*' .env) | $0",
+    "wr": "echo 'npx wrangler pages dev .vercel/output/static --compatibility-flag=nodejs_compat --port 8788 --live-reload --local --persist --binding' $(grep -o '^[^#]*' .env) | $0",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:create": "npx wrangler d1 execute D1_LOCAL_DB --local --file=./scripts/d1/schema.sql"
   },
   "dependencies": {
     "@types/node": "18.16.3",
@@ -34,6 +35,7 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   },
